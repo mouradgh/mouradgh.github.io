@@ -2329,7 +2329,7 @@ Some screenshots : <br>
 
                                                                     <div id="contact-status"></div>
 
-                                                                    <form action="mailto:mouradelghissassi@gmail.com" id="contactform">
+                                                                    <form action="#" method="post" onsubmit="mailIt(); return false;" id="contactform">
                                                                         <p class="form-group" id="contact-name">
                                                                             <label for="name">Your Name</label>
                                                                             <input type="text" name="name" class="form-control name-contact" id="inputSuccess" placeholder="Nom..." />
@@ -2348,7 +2348,7 @@ Some screenshots : <br>
 
                                                                         <section class="button-demo" style="display: inline-block;">
                                                                             <!-- <button class="ladda-button submit send_email" name="submit" data-color="green" data-style="expand-left">SEND MESSAGE</button> -->
-                                                                            <button class="ladda-button submit send_email" name="submit" data-color="green" data-style="expand-left">SEND MESSAGE</button>
+                                                                            <button type="submit" class="ladda-button submit send_email" name="submit" data-color="green" data-style="expand-left">SEND MESSAGE</button>
                                                                             
                                                                         </section>
 
@@ -2426,13 +2426,11 @@ Some screenshots : <br>
 
         <!-- send email function -->
         <script type="text/javascript">
-        function sendMail() {
-            var link = "mailto:mouradelghissassi@gmail.com"
-                     + "&subject=" + escape(document.getElementById('contact-email').value)
-                     + "&body=" + escape(document.getElementById('contact-message').value)
-            ;
-
-            window.location.href = link;
+        function mailIt() {
+            var elms=document.forms[0].elements;
+            var q='Dear '+elms.name.value+'&#37;0AYour '+elms.comment.value+' in bla bla ...';
+            document.forms[0].action='mailto:name@domain.com?cc='+elms.email.value+'&subject=Feedback form&body=' + q;
+            document.forms[0].submit();
         }
         </script>
 
